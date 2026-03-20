@@ -487,7 +487,7 @@ static int show_vma_header_prefix(struct seq_file *m, unsigned long start,
 
 	out[len++] = ' ';
 
-	len += num_to_str(&out[len], 20, ino);
+	len += num_to_str(&out[len], 20, ino, 0);
 
 	out[len++] = ' ';
 
@@ -1071,7 +1071,7 @@ static int show_smap(struct seq_file *m, void *v)
 		SEQ_PUT_DEC(" kB\nKernelPageSize: ", 4);
 		SEQ_PUT_DEC(" kB\nMMUPageSize:    ", 4);
 		seq_puts(m, " kB\n");
-		__show_smap(m, &mss, false);
+		__show_smap(m, &mss);
 		if (arch_pkeys_enabled())
 				seq_printf(m, "ProtectionKey:  %8u\n", vma_pkey(vma));
 		seq_puts(m, "VmFlags: mr mw me");
